@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Notification Settings</title>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Notification Settings</h1>
+
+        <div class="setting">
+            <h2>Shkiya Type</h2>
+            <label><input type="checkbox" id="shkiya-type-toggle"> Enable</label>
+            <select id="shkiya-type">
+                <option value="40">40 minutes</option>
+                <option value="22">22 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="18">18 minutes</option>
+            </select>
+            <button onclick="saveShkiyaType()">Save</button>
+        </div>
+
+        <div class="setting">
+            <h2>Daily Events</h2>
+            <label><input type="checkbox" id="daily-events-toggle"> Enable</label>
+            <select id="daily-events">
+                <option value="shema-end-time">Shema End Time</option>
+                <option value="shaharit-end-time">Shaharit End Time</option>
+                <option value="minha-end-time">Minha End Time</option>
+            </select>
+            <input type="number" id="daily-events-input" placeholder="Minutes before">
+            <button onclick="saveDailyEvent()">Save</button>
+        </div>
+
+        <div class="setting">
+            <h2>Holidays</h2>
+            <label><input type="checkbox" id="holidays-toggle"> Enable</label>
+            <select id="holidays">
+                <option value="hanukah">Hanukah</option>
+                <option value="purim">Purim</option>
+                <option value="pesah">Pesah</option>
+            </select>
+            <input type="number" id="holidays-input" placeholder="Minutes before">
+            <button onclick="saveHoliday()">Save</button>
+        </div>
+
+        <div class="setting">
+            <h2>Fasts</h2>
+            <label><input type="checkbox" id="fasts-toggle"> Enable</label>
+            <select id="fasts">
+                <option value="yom-kipur">Yom Kipur</option>
+                <option value="tisha-bav">Tisha B'Av</option>
+            </select>
+            <input type="number" id="fasts-input" placeholder="Minutes before">
+            <button onclick="saveFast()">Save</button>
+        </div>
+
+        <button onclick="saveAllSettings()">Save All Settings</button>
+
+        <div id="json-output"></div>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+        tg.expand(); //расширяем на все окно
+
+        tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
+        tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+        tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+        tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+        tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
+        tg.MainButton.show()
+    </script>
+    <script src="/static/script.js"></script>
+    <script src="/static/script_tg.js"></script>
+</body>
+</html>
